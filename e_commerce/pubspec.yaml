@@ -39,6 +39,7 @@ dependencies:
   cupertino_icons: ^1.0.8 #library for iOS icons
   flutter_svg : ^2.0.10 # library for SVG usage in the project
   provider : ^6.1.2 #library for State Management
+  intl: ^0.17.0 #library for number format
   
   # State Management paling populer
   # - Provider

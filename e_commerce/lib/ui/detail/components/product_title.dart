@@ -1,6 +1,7 @@
 import 'package:e_commerce/consts.dart';
 import 'package:e_commerce/models/products.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ProductTitle extends StatelessWidget {
   const ProductTitle({super.key, required this.product});
@@ -43,7 +44,7 @@ class ProductTitle extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     Text(
-                      "${product.price}",
+                      "Rp${NumberFormat('#,###').format(product.price)}",
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 22,

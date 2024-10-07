@@ -1,6 +1,7 @@
 import 'package:e_commerce/consts.dart';
 import 'package:e_commerce/models/products.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({super.key, required this.product, required this.press});
@@ -34,7 +35,7 @@ class ItemCard extends StatelessWidget {
               style: const TextStyle(color: textColor),
             ),
           ),
-          Text("Rp ${product.price}")
+          Text("Rp${NumberFormat('#,###').format(product.price)}")
         ],
       ),
     );

@@ -18,12 +18,12 @@ class CatalogueScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {}, 
-            icon: Icon(Icons.search)
+            icon: const Icon(Icons.search)
 
           ),
           IconButton(
             onPressed: () {}, 
-            icon: Icon(Icons.shopping_cart_outlined)
+            icon: const Icon(Icons.shopping_cart_outlined)
           ),
         ],
       ),

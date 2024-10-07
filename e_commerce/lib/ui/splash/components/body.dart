@@ -12,7 +12,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   int currentPage = 0;
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   // List<String> product = List.generate(
   //   10, (index) => "Product ${index +1}"
   //   );
