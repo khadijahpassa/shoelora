@@ -21,6 +21,7 @@ class WishlistProvider with ChangeNotifier {
       // jika sudah ada item yang ditambahkan ke keranjang wishlist
       return;
     } else {
+      // kalo kosong, ditambah
       _wishlistItems.putIfAbsent(
         id, 
         () => WishlistItem(image, id: id, title: title, price: price)
@@ -34,6 +35,7 @@ class WishlistProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // untuk membersihkan cache
   void clearWishlist() {
     _wishlistItems.clear();
     notifyListeners();

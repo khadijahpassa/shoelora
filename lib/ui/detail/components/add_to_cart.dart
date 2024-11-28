@@ -3,14 +3,18 @@ import 'package:shoelora/consts.dart';
 import 'package:shoelora/models/products.dart';
 import 'package:flutter/material.dart';
 import 'package:shoelora/state-management/cart_provider.dart';
+import 'package:shoelora/state-management/theme_provider.dart';
 
 class AddToCart extends StatelessWidget {
-  const AddToCart({super.key, required this.product});
+  const AddToCart({super.key, required this.product, required this.quantity});
+
   final Product product;
+  final int quantity;
 
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: defaultPadding),
@@ -31,7 +35,8 @@ class AddToCart extends StatelessWidget {
                   product.id.toString(), //data type converter
                   product.title,
                   product.price,
-                  product.image
+                  product.image,
+                  quantity // ngga langsung deklarasi sebagai 1, hanya langsung consume
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -56,7 +61,8 @@ class AddToCart extends StatelessWidget {
                   product.id.toString(), 
                   product.title, 
                   product.price,
-                  product.image
+                  product.image,
+                  quantity
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -69,7 +75,7 @@ class AddToCart extends StatelessWidget {
                 "BUY NOW",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color(0xFFFFFFFF)
                 ),
               )
           ),

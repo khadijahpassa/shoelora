@@ -19,6 +19,8 @@ class SettingsScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
+                  // proses utama yang berjalan
+                  // negasi karena default tema aplikasi itu terang
                   themeProvider.toggleTheme(!themeProvider.isDarkTheme);
                 },
                 icon: Icon(
@@ -31,47 +33,49 @@ class SettingsScreen extends StatelessWidget {
           // backgroundColor: Colors.white,
           centerTitle: true,
         ),
-        body: const Padding(
-          padding: EdgeInsets.all(defaultPadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Account",
-                style: TextStyle(
-                    fontSize: 23,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              AccountSettings(
-                  icon: Icons.notifications_active_outlined,
-                  text: "Notification Settings"),
-              AccountSettings(
-                  icon: Icons.shopping_cart_outlined, text: "Shopping Address"),
-              AccountSettings(
-                  icon: Icons.payment_rounded, text: "Payment Info"),
-              AccountSettings(
-                  icon: Icons.delete_outline_rounded, text: "Delete Account"),
-              SizedBox(
-                height: 40,
-              ),
-              Text(
-                "App Settings",
-                style: TextStyle(
-                    fontSize: 23,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              AppSet(text: "Enable Face ID For Log In"),
-              AppSet(text: "Enable Push Notifications"),
-              AppSet(text: "Enable Location Services"),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(defaultPadding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Account",
+                  style: TextStyle(
+                      fontSize: 23,
+                      color: themeProvider.isDarkTheme ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                const AccountSettings(
+                    icon: Icons.notifications_active_outlined,
+                    text: "Notification Settings"),
+                const AccountSettings(
+                    icon: Icons.shopping_cart_outlined, text: "Shopping Address"),
+                const AccountSettings(
+                    icon: Icons.payment_rounded, text: "Payment Info"),
+                const AccountSettings(
+                    icon: Icons.delete_outline_rounded, text: "Delete Account"),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "App Settings",
+                  style: TextStyle(
+                      fontSize: 23,
+                      color: themeProvider.isDarkTheme ? Colors.white : Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                const AppSet(text: "Enable Face ID For Log In"),
+                const AppSet(text: "Enable Push Notifications"),
+                const AppSet(text: "Enable Location Services"),
+              ],
+            ),
           ),
         ));
   }
@@ -99,12 +103,12 @@ class _AppSetState extends State<AppSet> {
           children: [
             Text(
               widget.text,
-              style: const TextStyle(fontSize: 20, color: Colors.black),
+              style: const TextStyle(fontSize: 20, color: textColor),
             ),
             const Spacer(),
             Switch(
               value: light,
-              activeColor: secondaryColor,
+              activeColor: primaryColor,
               onChanged: (bool value) {
                 setState(() {
                   light = value;
@@ -154,7 +158,7 @@ class AccountSettings extends StatelessWidget {
           ),
           Text(
             text,
-            style: const TextStyle(fontSize: 20, color: Colors.black),
+            style: const TextStyle(fontSize: 20, color: textColor),
           ),
           const Spacer(),
           Icon(

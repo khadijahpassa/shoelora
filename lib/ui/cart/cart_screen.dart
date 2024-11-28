@@ -34,6 +34,7 @@ class CartScreen extends StatelessWidget {
                 backgroundImage: AssetImage(cartItem.image),
               ),
               title: Text(cartItem.title),
+              subtitle: Text("Quantity: ${cartItem.quantity}"),
               trailing: IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: (){
@@ -52,25 +53,51 @@ class CartScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              "Total:",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Total:",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+                Text(
+                  "${cartProvider.totalPrice}",
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: primaryColor
+                  ),
+                )
+              ]
             ),
-            Text(
-              "${cartProvider.totalPrice}",
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: primaryColor
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: primaryColor,
+                  maximumSize: const Size.fromHeight(50),
+                  
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  )
+                ),
+                onPressed: (){}, 
+                child: const Text(
+                  "CHECK OUT",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                )
               ),
-            )
-          ]
+            )],
         ),
       ),
     );

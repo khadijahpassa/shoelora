@@ -17,6 +17,7 @@ class _BodyState extends State<Body> {
   //   10, (index) => "Product ${index +1}"
   //   );
 
+  // dasar pengambilan data dari API
   List<Map<String, String>> splashData = [
     {
       "text": "Stylish shoes for men and women, shop now.",
@@ -51,7 +52,7 @@ class _BodyState extends State<Body> {
                     },
                     itemCount: splashData.length, //memberikan batasan slide, length: definisi panjang array(data)
                     // sebagai adapter antara splashData & SplashContent 
-                    itemBuilder: (context, index) => SplashContent( //context :memperkenalkan dlu kalo ini tuh punya body.dart, index : akses list data array
+                    itemBuilder: (context, index) => SplashContent( //context: memperkenalkan dlu kalo ini tuh punya body.dart, index: akses list data array
                         text: splashData[index]["text"]!, 
                         image: splashData[index]["image"]!)
                  ),

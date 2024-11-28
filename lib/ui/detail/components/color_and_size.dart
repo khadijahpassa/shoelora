@@ -1,6 +1,8 @@
+import 'package:provider/provider.dart';
 import 'package:shoelora/consts.dart';
 import 'package:shoelora/models/products.dart';
 import 'package:flutter/material.dart';
+import 'package:shoelora/state-management/theme_provider.dart';
 
 class ColorAndSize extends StatelessWidget {
   const ColorAndSize({super.key, required this.product});
@@ -9,14 +11,18 @@ class ColorAndSize extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Color"),
-              Row(
+              Text(
+                "Color",
+                style: TextStyle(color: themeProvider.isDarkTheme ? const Color(0xFFC8C8C8) : const Color(0xFF0A080E))),
+              const Row(
                 children: [
                   ColorPicker(
                     color: Color(0xFF4667FF), 
@@ -40,14 +46,14 @@ class ColorAndSize extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Size:",
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: themeProvider.isDarkTheme ?  const Color(0xFFC8C8C8) : const Color(0xFF0A080E)),
               ),
               const SizedBox(height: 10),
               RichText(
                 text: TextSpan(
-                  style: const TextStyle(color: textColor),
+                  style: TextStyle(color: themeProvider.isDarkTheme ?  const Color(0xFFC8C8C8) : const Color(0xFF0A080E)),
                   children: [
                     TextSpan(
                       text: "${product.size} CM",

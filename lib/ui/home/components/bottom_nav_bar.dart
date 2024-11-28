@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar(
-      {super.key, required this.selectedIndex, required this.onItemTapped});
+    {super.key, required this.selectedIndex, required this.onItemTapped});
 
   final int selectedIndex;
   final ValueChanged<int> onItemTapped;
@@ -31,6 +31,7 @@ class BottomNavBar extends StatelessWidget {
       ],
       currentIndex: selectedIndex,
       unselectedItemColor: const Color.fromARGB(255, 147, 147, 147),
+      // bisa juga pake ternary func
       selectedItemColor: primaryColor,
       onTap: onItemTapped,
     );

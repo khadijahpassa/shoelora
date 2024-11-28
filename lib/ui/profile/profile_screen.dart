@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoelora/consts.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -38,7 +39,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/profile.png'),
+                      backgroundColor: primaryColor,
+                      // backgroundImage: AssetImage(''),
                     ),
                     Icon(Icons.camera_alt, color: Colors.white),
                   ],
@@ -46,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 20),
               const Text(
-                'Alisson Becker',
+                'Khadijah Passa',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -64,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Alosson Becker',
+                  hintText: 'Khadijah Passa',
                 ),
               ),
               const SizedBox(height: 20),
@@ -79,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                const TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'alisson@example.com',
+                  hintText: 'khadijah@example.com',
                 ),
               ),
               const SizedBox(height: 20),
@@ -114,9 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  // Logic to save profile changes
-                },
+                onPressed: () {},
                 child: const Text('Save Changes'),
               ),
             ],

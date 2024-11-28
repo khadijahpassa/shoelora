@@ -1,12 +1,15 @@
+import 'package:provider/provider.dart';
 import 'package:shoelora/consts.dart';
 import 'package:shoelora/models/products.dart';
+import 'package:shoelora/state-management/theme_provider.dart';
+import 'package:shoelora/ui/home/components/carousel.dart';
+import 'package:shoelora/ui/home/components/search_bar.dart';
 import 'package:shoelora/ui/settings/settings_screen.dart';
 import 'package:shoelora/ui/cart/cart_screen.dart';
 import 'package:shoelora/ui/detail/detail_screen.dart';
 import 'package:shoelora/ui/home/components/bottom_nav_bar.dart';
 import 'package:shoelora/ui/home/components/categories.dart';
 import 'package:shoelora/ui/home/components/item_card.dart';
-import 'package:shoelora/ui/home/components/search_bar.dart';
 import 'package:shoelora/ui/profile/profile_screen.dart';
 import 'package:shoelora/ui/wishlist/wishlist_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,19 +32,23 @@ class _CatalogueScreenState extends State<CatalogueScreen> {
     const ProfileScreen()
   ];
 
-  //klo itemnya di tap
+  // function untuk aksi tap pada bottom nav bar
   void _onItemTapped(int index){ 
     setState(() {
+      /* menyatakan bahwa initial actionnya
+      akan menampilkan objek yang berada pada index ke-0 */
       _selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
+        backgroundColor: themeProvider.isDarkTheme ? const Color(0xFF0A080E) : Colors.white,
         elevation: 0, // remove shadow
         title: const Text(
           'Shoelora',
@@ -73,16 +80,7 @@ class _CatalogueScreenState extends State<CatalogueScreen> {
       ? Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              'Women',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30
-              ),
-            ),
-          ),
+          const ImageCarousel(),
           const SearchField(),
           const Categories(), //untuk manggil Categories
           Expanded(

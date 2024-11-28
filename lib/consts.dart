@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 // A primary color definition
 const primaryColor = Color(0xFF5246FF);
-const primaryLightColor = Color(0xFFFFECDF);
+const primaryLightColor = Color(0xFFB0AAFF);
 const primaryGradientColor = LinearGradient(
   colors: [
     Color(0xFF629EFF),

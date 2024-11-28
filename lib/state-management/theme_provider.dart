@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// ThemeProvider bisa pake semua fitur ChangeNotifier
+// ThemeProvider bisa pake semua fitur ChangeNotifier, dengan OOP inheritence
 class ThemeProvider extends ChangeNotifier{
   bool _isDarkTheme = false; //sebuah Setter, bukan var biasa
 
   ThemeProvider() {
+    // proses yang diolah oleh ThemeProvider
     _loadTheme();
   }
 

@@ -1,5 +1,7 @@
+import 'package:provider/provider.dart';
 import 'package:shoelora/consts.dart';
 import 'package:shoelora/models/products.dart';
+import 'package:shoelora/state-management/theme_provider.dart';
 import 'package:shoelora/ui/cart/cart_screen.dart';
 import 'package:shoelora/ui/detail/components/add_to_cart.dart';
 import 'package:shoelora/ui/detail/components/cart_counter.dart';
@@ -17,11 +19,16 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    int quantity = 1;
     // The way that use for making the widget become responsive, as the device size
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: product.color,
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: themeProvider.isDarkTheme ? const Color(0xFF0A080E) : Colors.white, 
+        ),
         backgroundColor: product.color,
         elevation: 0, // remove shadow
         actions: [
@@ -32,8 +39,8 @@ class DetailScreen extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const WishlistScreen())
               );
             }, 
-            icon: const Icon(Icons.favorite_border_outlined)
-
+            icon: const Icon(Icons.favorite_border_outlined),
+            color: themeProvider.isDarkTheme ? const Color(0xFF0A080E) : Colors.white,
           ),
           IconButton(
             onPressed: () {
@@ -42,7 +49,8 @@ class DetailScreen extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const CartScreen())
               );
             }, 
-            icon: const Icon(Icons.shopping_cart_outlined)
+            icon: const Icon(Icons.shopping_cart_outlined),
+            color: themeProvider.isDarkTheme ? const Color(0xFF0A080E) : Colors.white,
           ),
         ],
       ),
@@ -62,9 +70,9 @@ class DetailScreen extends StatelessWidget {
                       horizontal: defaultPadding,
                       vertical: defaultPadding,
                     ),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: themeProvider.isDarkTheme ? Colors.black :  Colors.white,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(24),
                         topRight: Radius.circular(24),
                       )
@@ -79,12 +87,12 @@ class DetailScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const CartCounter(),
+                            CartCounter(product: product),
                             FavButton(product: product)
                           ],
                         ),
                         const SizedBox(height: defaultPadding),
-                        AddToCart(product: product)
+                        AddToCart(product: product, quantity: quantity)
                       ]
                     ),
                   ),
