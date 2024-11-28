@@ -3,7 +3,6 @@ import 'package:shoelora/consts.dart';
 import 'package:shoelora/models/products.dart';
 import 'package:flutter/material.dart';
 import 'package:shoelora/state-management/cart_provider.dart';
-import 'package:shoelora/state-management/theme_provider.dart';
 
 class AddToCart extends StatelessWidget {
   const AddToCart({super.key, required this.product, required this.quantity});
@@ -14,7 +13,6 @@ class AddToCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
-    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: defaultPadding),
