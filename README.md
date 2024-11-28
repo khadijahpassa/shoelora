@@ -1,16 +1,11 @@
-# shoelora
+# Shoelora
 
-A new Flutter project.
+An e-commerce Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Shoelora is an e-commerce built with Flutter, featuring a curated shoe collection for modern lifestyles. This update introduces:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Dark Theme  for a flexible shopping experience.
+- Add to Cart  for easier checkout.
+- Add to Favorites  to save preferred items.
